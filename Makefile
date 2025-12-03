@@ -1,3 +1,5 @@
+default: all
+
 day1: day1.c
 	cc -o day1 day1.c
 

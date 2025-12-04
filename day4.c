@@ -23,7 +23,7 @@ int main() {
     char input[256];
     while (fgets(input, sizeof(input), fp)) {
         for (int i = 0; i < LENGTH; ++i) {
-            diagram[(line_number + 1)][(i + 1)] = input[i];
+            if (input[i] == '@') diagram[(line_number + 1)][(i + 1)] = 1;
         }
         line_number++;
     }

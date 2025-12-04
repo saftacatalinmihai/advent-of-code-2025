@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdbool.h>
 
 #define HEIGHT 137
@@ -24,8 +22,8 @@ int main() {
     int line_number = 0;
     char input[256];
     while (fgets(input, sizeof(input), fp)) {
-        for (int i = 0; i < HEIGHT; ++i) {
-            if (input[i] == '@') diagram[(line_number + 1)][(i + 1)] = 1;
+        for (int i = 0; i < LENGTH; ++i) {
+            diagram[(line_number + 1)][(i + 1)] = input[i];
         }
         line_number++;
     }

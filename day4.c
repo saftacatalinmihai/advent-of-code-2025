@@ -30,8 +30,7 @@ int main() {
 
     char diagram[HEIGHT+2][LENGTH+2] = {0}; // Border padding
     int line_number = 0;
-    char input[256];
-    while (fgets(input, sizeof(input), fp)) {
+    for (char input[256]; fgets(input, sizeof(input), fp);) {
         for (int i = 0; i < LENGTH; ++i) {
             if (input[i] == '@') diagram[(line_number + 1)][(i + 1)] = 1;
         }

@@ -40,9 +40,8 @@ int main() {
     printf("Count: %d\n", count);
 
     // Part 2
-    bool found = true;
     int count_removed = 0;
-    while(found) {
+    for (bool found = true; found;) {
         found = false;
         for (int i = 1; i < HEIGHT + 1 ; i++) {
             for (int j = 1; j < LENGTH + 1 ; j++) {

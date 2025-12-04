@@ -6,6 +6,17 @@
 #define HEIGHT 137
 #define LENGTH 137
 
+int count_neighbors(char diagram[HEIGHT+2][LENGTH+2], int i, int j) {
+    int num_neighbors = 0;
+    for (int di = -1; di <= 1; di++) {
+        for (int dj = -1; dj <= 1; dj++) {
+            if (di == 0 && dj == 0) continue;
+            if (diagram[i + di][j + dj] == 1) num_neighbors++;
+        }
+    }
+    return num_neighbors;
+}
+
 int main() {
     FILE *fp = fopen("day4input.txt", "rb");
 
@@ -14,7 +25,7 @@ int main() {
     char input[256];
     while (fgets(input, sizeof(input), fp)) {
         for (int i = 0; i < HEIGHT; ++i) {
-            if (input[i] == '@') { diagram[(line_number + 1)][(i + 1)] = 1; }
+            if (input[i] == '@') diagram[(line_number + 1)][(i + 1)] = 1;
         }
         line_number++;
     }
@@ -23,17 +34,8 @@ int main() {
     int count = 0;
     for (int i = 1; i < HEIGHT + 1; i++) {
         for (int j = 1; j < LENGTH + 1; j++) {
-            int num_neighbors = 0;
-            if (diagram[i][j] == 0) { continue; }
-            for (int di = -1; di <= 1; di++) {
-                for (int dj = -1; dj <= 1; dj++) {
-                    if (di == 0 && dj == 0) continue;
-                    if (diagram[i + di][j + dj] == 1) {
-                        num_neighbors++;
-                    }
-                }
-            }
-            if (num_neighbors < 4) { count++; }
+            if (diagram[i][j] == 0) continue;
+            if (count_neighbors(diagram, i, j) < 4) count++;
         }
     }
 
@@ -46,17 +48,8 @@ int main() {
         found = false;
         for (int i = 1; i < HEIGHT + 1 ; i++) {
             for (int j = 1; j < LENGTH + 1 ; j++) {
-                int num_neighbors = 0;
-                if (diagram[i][j] == 0) {continue;}
-                for (int di = -1; di <= 1; di++) {
-                    for (int dj = -1; dj <= 1; dj++) {
-                        if (di == 0 && dj == 0) continue;
-                        if (diagram[i + di][j + dj] == 1) {
-                            num_neighbors++;
-                        }
-                    }
-                }
-                if (num_neighbors < 4) {
+                if (diagram[i][j] == 0) continue;
+                if (count_neighbors(diagram, i, j) < 4) {
                     found = true;
                     count_removed++;
                     diagram[i][j] = 0;
@@ -65,6 +58,5 @@ int main() {
         }
     }
     printf("Count removed: %d\n", count_removed);
-
     return 0;
 }

@@ -15,8 +15,8 @@ int main () {
     int ranges_count = 0, ids_count = 0;
     for (char input[256]; fgets(input, sizeof(input), fp);) {
         if (range_section) {
-            int r = sscanf(input, "%ld-%ld", &a, &b);
-            if (r > 0) {
+            int num_matched = sscanf(input, "%ld-%ld", &a, &b);
+            if (num_matched > 0) {
                 for (int i = 0; i < ranges_count; ++i) {
                     if (ranges[i].merged) continue;
                     if ((a >= ranges[i].start && a <= ranges[i].end) ||
@@ -40,15 +40,13 @@ int main () {
 
     unsigned long count_fresh = 0;
     for (int i = 0; i < ids_count; ++i) {
-        bool in_any_range = false;
         for (int j = 0; j < ranges_count; ++j) {
             if (ranges[j].merged) continue;
             if (ids[i] >= ranges[j].start && ids[i] <= ranges[j].end) {
-                in_any_range = true;
+                count_fresh++;
                 break;
             }
         }
-        if (in_any_range) count_fresh++;
     }
     printf("Count fresh IDs: %ld\n", count_fresh);
   

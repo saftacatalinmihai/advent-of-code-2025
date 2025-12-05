@@ -1,8 +1,5 @@
-#include <limits.h>
 #include <stdbool.h>
-#include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef struct Range { long start; long end; bool merged; } Range;
 

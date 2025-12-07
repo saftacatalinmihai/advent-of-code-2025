@@ -4,27 +4,22 @@
 int main() {
     FILE *fp = fopen("day7input.txt", "rb");
 
-    int line_number = 0;
+    int line_number = 0, num_splits = 0;
     char input[256]; 
     fgets(input, sizeof(input), fp);
 
-    int previous_line[140] = {0};
-    previous_line[70] = 1;
-    int num_splits = 0;
-    for (; fgets(input, sizeof(input), fp);) { 
-        int next_line[140] = {0};
+    int diagram[256][256] = {0};
+    diagram[0][70] = 1;
+    while(fgets(input, sizeof(input), fp)) { 
         for (int i = 0; i < 140; ++i) {
-            if (previous_line[i] == 1) {
-                if (input[i] == '.') next_line[i] = 1;
+            if (diagram[line_number][i] == 1) {
+                if (input[i] == '.') diagram[line_number+1][i] = 1;
                 if (input[i] == '^') {
-                    next_line[i - 1] = 1;
-                    next_line[i + 1] = 1;
+                    diagram[line_number+1][i - 1] = 1;
+                    diagram[line_number+1][i + 1] = 1;
                     num_splits++;
                 }
             }
-        }
-        for (int i = 0; i < 140; ++i) {
-            previous_line[i] = next_line[i];
         }
         line_number++;
     }

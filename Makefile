@@ -21,7 +21,10 @@ day6: day6.c
 day7: day7.c
 	cc -o day7 day7.c
 
-all: day1 day2 day3 day4 day5 day6 day7
+day8: day8.c
+	cc -o day8 day8.c
+
+all: day1 day2 day3 day4 day5 day6 day7 day8
 	time ./day1
 	time ./day2
 	time ./day3
@@ -29,6 +32,7 @@ all: day1 day2 day3 day4 day5 day6 day7
 	time ./day5
 	time ./day6
 	time ./day7
+	time ./day8
 
 clean:
-	rm -f day1 day2 day3 day4 day5 day6 day7
+	rm -f day1 day2 day3 day4 day5 day6 day7 day8

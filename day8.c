@@ -43,10 +43,6 @@ Edge* smallest_distance_edge() {
             smallest_to = junctions[i].next_closest_junction_id;
         }
     }
-    if (smallest_from == -1) {
-        printf("No unsearched edges remaining!\n");
-        return NULL;
-    }
     edges[smallest_from][smallest_to].searched = true;
     edges[smallest_to][smallest_from].searched = true;
     return &edges[smallest_from][smallest_to];

@@ -42,15 +42,6 @@ Edge* smallest_distance_edge() {
             smallest_from = i;
             smallest_to = junctions[i].next_closest_junction_id;
         }
-        /* for (int j = i+1; j < MAX_JUNCTIONS; j++) { */
-        /*     if (edges[i][j].searched || edges[j][i].searched) { continue; } */
-        /*     double dist = dist_between(i, j); */
-        /*     if (smallest_distance == -1 || dist < smallest_distance) { */
-        /*         smallest_distance = dist; */
-        /*         smallest_from = i; */
-        /*         smallest_to = j; */
-        /*     } */
-        /* } */
     }
     if (smallest_from == -1) {
         printf("No unsearched edges remaining!\n");

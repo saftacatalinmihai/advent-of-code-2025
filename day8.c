@@ -9,7 +9,6 @@ double  distance(int a[3], int b[3]) {
     return sqrt(pow(b[0] - a[0], 2) + pow(b[1] - a[1], 2) + pow(b[2] - a[2], 2));
 }
 
-/* #define MAX_JUNCTIONS 20 */
 #define MAX_JUNCTIONS 1000
 typedef struct Junction {
     int x, y, z;
@@ -112,7 +111,6 @@ int main() {
         updated = update_next_closest_junction(e->from) && update_next_closest_junction(e->to);
         e = smallest_distance_edge();
 
-        // Part 1:
         if (iter++ == 1000) {
             int product = 1;
             for (int i = 0; i < MAX_JUNCTIONS; i++) {

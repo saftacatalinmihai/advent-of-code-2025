@@ -1,7 +1,6 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 /* #define TEST 1 */
 #ifdef TEST

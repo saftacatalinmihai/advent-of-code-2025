@@ -1,7 +1,10 @@
 default: all
 
-DAYS := $(shell seq 1 9)
-BINS := $(addprefix day, $(DAYS))
+# Find all files matching the pattern
+SRCS := $(wildcard day*.c)
+
+# Derive binary and run names from found sources
+BINS := $(SRCS:.c=)
 RUNS := $(addprefix run, $(BINS))
 
 .PHONY: all clean $(RUNS)
@@ -10,7 +13,7 @@ all: $(RUNS)
 
 # Static Pattern Rule for compiling: [targets] : [target-pattern] : [prereq]
 $(BINS): day%: day%.c
-	$(CC) -o $@ $<
+	$(CC) -O3 -o $@ $<
 
 # Static Pattern Rule for running: [targets] : [target-pattern] : [prereq]
 $(RUNS): runday%: day%

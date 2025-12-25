@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-/* #define TEST 1 */
+#define TEST
 #ifdef TEST
 #define TILES_HEIGHT "10"
 #define TILES_WIDTH  "12"
@@ -10,8 +10,6 @@
 #define TILES_HEIGHT "98242"
 #define TILES_WIDTH  "98147"
 #endif 
-
-/* int tile_floor[TILES_HEIGHT][TILES_WIDTH] = {0}; */
 
 #ifdef TEST
 #define MAX_RED_TILES 8
